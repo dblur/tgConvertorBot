@@ -10,6 +10,7 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.PhotoSize;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,7 +30,7 @@ public class TelegramBot extends TelegramLongPollingBot {
     private String token;
 
     private final CommandContainer commandContainer;
-    ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
+
 
     public TelegramBot() {
         this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this));

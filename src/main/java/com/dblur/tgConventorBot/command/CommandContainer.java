@@ -9,7 +9,6 @@ import static com.dblur.tgConventorBot.command.CommandName.*;
 
 public class CommandContainer {
     private final ImmutableMap<String, Command> commandMap;
-    private final Command unknownCommand;
 
     public CommandContainer(SendBotMessageService sendBotMessageService) {
 
@@ -21,11 +20,9 @@ public class CommandContainer {
                 .put(NOT_IMAGE.getCommandName(), new NotImageCommand(sendBotMessageService))
                 .put(UNKNOWN.getCommandName(), new UnknownCommand(sendBotMessageService))
                 .build();
-
-        unknownCommand = new UnknownCommand(sendBotMessageService);
     }
 
     public Command retrieveCommand(String commandIdentifier) {
-        return commandMap.getOrDefault(commandIdentifier, unknownCommand);
+        return commandMap.get(commandIdentifier);
     }
 }
