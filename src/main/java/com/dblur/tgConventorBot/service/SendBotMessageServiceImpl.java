@@ -12,8 +12,8 @@ public class SendBotMessageServiceImpl implements SendBotMessageService {
     private final TelegramBot tgBot;
 
     @Autowired
-    public SendBotMessageServiceImpl(TelegramBot javarushBot) {
-        this.tgBot = javarushBot;
+    public SendBotMessageServiceImpl(TelegramBot tgBot) {
+        this.tgBot = tgBot;
     }
 
     @Override

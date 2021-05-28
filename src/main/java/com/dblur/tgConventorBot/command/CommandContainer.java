@@ -18,6 +18,8 @@ public class CommandContainer {
                 .put(STOP.getCommandName(), new StopCommand(sendBotMessageService))
                 .put(HELP.getCommandName(), new HelpCommand(sendBotMessageService))
                 .put(NO.getCommandName(), new NoCommand(sendBotMessageService))
+                .put(NOT_IMAGE.getCommandName(), new NotImageCommand(sendBotMessageService))
+                .put(UNKNOWN.getCommandName(), new UnknownCommand(sendBotMessageService))
                 .build();
 
         unknownCommand = new UnknownCommand(sendBotMessageService);
