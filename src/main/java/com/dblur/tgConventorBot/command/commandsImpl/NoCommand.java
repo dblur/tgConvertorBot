@@ -8,7 +8,7 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 public class NoCommand implements Command {
 
     private final SendBotMessageService sendBotMessageService;
-    public static final String NO_MESSAGE = "Я не понимаю данной команды.\n"
+    public static final String NO_MESSAGE = "❗ Я не понимаю данной команды. ❗\n"
             + "Чтобы использовать корректную команду - используйте кнопки в меню";
 
     public NoCommand(SendBotMessageService sendBotMessageService) {

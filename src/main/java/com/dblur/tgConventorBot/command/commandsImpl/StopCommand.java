@@ -8,7 +8,7 @@ public class StopCommand implements Command {
 
     private final SendBotMessageService sendBotMessageService;
 
-    public static final String STOP_MESSAGE = "Остановился \uD83D\uDE1F.";
+    public static final String STOP_MESSAGE = "Остановился.";
 
     public StopCommand(SendBotMessageService sendBotMessageService) {
         this.sendBotMessageService = sendBotMessageService;

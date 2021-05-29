@@ -1,7 +1,9 @@
 package com.dblur.tgConventorBot.menu;
 
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 
 import java.util.ArrayList;
@@ -11,7 +13,6 @@ import static com.dblur.tgConventorBot.command.CommandList.*;
 
 public class MainMenu {
 
-    private final String START_BUTTON = START.getCommandName();
     private final String INFORMATION_BUTTON = INFORMATION.getCommandName();
     private final String HELP_BUTTON = HELP.getCommandName();
     private final String STOP_BUTTON = STOP.getCommandName();
@@ -45,7 +46,6 @@ public class MainMenu {
 
         KeyboardRow row = new KeyboardRow();
 
-        row.add(HELP_BUTTON);
         row.add(INFORMATION_BUTTON);
         keyboard.add(row);
 

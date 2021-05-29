@@ -13,13 +13,13 @@ public class InformationCommand implements Command {
     public static final String INFORMATION_MESSAGE = String.format("""
                     ✨<b>Информация:</b>✨
 
-                    <b>Начать\\закончить работу с ботом:</b>
-                    %s - запустить бота.
-                    %s - приостановить бота.
+                    <b>Начать/закончить работу с ботом:</b>
+                    ⚙ %s - запустить бота.
+                    ⚙ %s - приостановить бота.
 
-                    <b>%s</b> - прочитать инструкцию по использованию.
-                    <b>%s</b> - посмотреть исходный код на Github.
-                    <b>%s</b> - прочая информация.""",
+                    ⚙ <b>%s</b> - прочитать инструкцию по использованию.
+                    ⚙ <b>%s</b> - посмотреть исходный код на Github.
+                    ⚙ <b>%s</b> - прочая информация.""",
             START.getCommandName(),
             STOP.getCommandName(),
             HOW_TO_USE.getCommandName(),
