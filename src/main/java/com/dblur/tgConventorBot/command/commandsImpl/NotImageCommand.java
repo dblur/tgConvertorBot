@@ -16,6 +16,6 @@ public class NotImageCommand implements Command {
 
     @Override
     public void execute(Update update) {
-        sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), NOT_IMAGE_MESSAGE);
+        sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), NOT_IMAGE_MESSAGE, update);
     }
 }

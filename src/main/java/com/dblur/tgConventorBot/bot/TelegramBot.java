@@ -9,19 +9,15 @@ import org.telegram.telegrambots.meta.api.objects.Document;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.PhotoSize;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static com.dblur.tgConventorBot.command.CommandName.*;
+import static com.dblur.tgConventorBot.command.CommandList.*;
 
 @Component
 public class TelegramBot extends TelegramLongPollingBot {
-
-    public static String COMMAND_PREFIX = "/";
 
     @Value("${bot.username}")
     private String username;
@@ -30,7 +26,6 @@ public class TelegramBot extends TelegramLongPollingBot {
     private String token;
 
     private final CommandContainer commandContainer;
-
 
     public TelegramBot() {
         this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this));
@@ -47,14 +42,12 @@ public class TelegramBot extends TelegramLongPollingBot {
         if (update.hasMessage()) {
             if (message.getText() != null) {
                 defineMessageLine(update);
-            }
-            else if (message.getDocument() != null) {
+            } else if (message.getDocument() != null) {
                 defineDocumentType(update);
-            }
-            else if (message.getPhoto() != null) {
+            } else if (message.getPhoto() != null) {
                 getMaxPhoto(update);
             } else {
-                commandContainer.retrieveCommand(UNKNOWN.getCommandName()).execute(update);
+                commandContainer.retrieveCommand(NO.getCommandName()).execute(update);
             }
         }
     }
@@ -62,11 +55,9 @@ public class TelegramBot extends TelegramLongPollingBot {
     private void defineMessageLine(Update update) {
         if (update.hasMessage() && update.getMessage().hasText()) {
             String message = update.getMessage().getText().trim();
-
-            if (message.startsWith(COMMAND_PREFIX)) {
-                String commandIdentifier = message.split(" ")[0].toLowerCase();
-                commandContainer.retrieveCommand(commandIdentifier).execute(update);
-            } else {
+            try {
+                commandContainer.retrieveCommand(message).execute(update);
+            } catch (Exception e) {
                 commandContainer.retrieveCommand(NO.getCommandName()).execute(update);
             }
         }
@@ -92,7 +83,7 @@ public class TelegramBot extends TelegramLongPollingBot {
                 sizeList.add(fileSize);
             }
             int maxSize = Collections.max(sizeList);
-            Integer indexOfMaxSize = sizeList.indexOf(maxSize);
+            int indexOfMaxSize = sizeList.indexOf(maxSize);
             Object maxPhoto = photo.get(indexOfMaxSize);
         }
     }

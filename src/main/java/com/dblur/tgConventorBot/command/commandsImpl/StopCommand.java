@@ -16,6 +16,6 @@ public class StopCommand implements Command {
 
     @Override
     public void execute(Update update) {
-        sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), STOP_MESSAGE);
+        sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), STOP_MESSAGE, update);
     }
 }
